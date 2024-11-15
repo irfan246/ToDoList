@@ -14,7 +14,7 @@ class _InputFormState extends State<InputForm> {
   final TextEditingController dateController = TextEditingController();
 
   String? selectedCategory;
-  final List<String> categories = ['Pemasukan', 'Pengeluaran'];
+  final List<String> categories = ['Income', 'Spending'];
 
   @override
   void initState() {
@@ -67,6 +67,7 @@ class _InputFormState extends State<InputForm> {
                     controller: dateController,
                     decoration: const InputDecoration(
                       labelText: 'Date',
+                      suffixIcon: Icon(Icons.date_range),
                     ),
                     readOnly: true,
                     onTap: pickDate, // Menghindari edit manual
@@ -83,6 +84,7 @@ class _InputFormState extends State<InputForm> {
                     controller: titleController,
                     decoration: const InputDecoration(
                       labelText: 'Enter Title',
+                      suffixIcon: Icon(Icons.app_registration),
                     ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -98,6 +100,7 @@ class _InputFormState extends State<InputForm> {
                     keyboardType: TextInputType.number,
                     decoration: const InputDecoration(
                       labelText: 'Enter Price',
+                      suffixIcon: Icon(Icons.attach_money),
                     ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -114,6 +117,7 @@ class _InputFormState extends State<InputForm> {
                     value: selectedCategory,
                     decoration: const InputDecoration(
                       labelText: 'Select Category',
+                      suffixIcon: Icon(Icons.list_alt),
                     ),
                     onChanged: (String? newValue) {
                       setState(() {

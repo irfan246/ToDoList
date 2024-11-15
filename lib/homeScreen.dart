@@ -80,13 +80,13 @@ class _HomeScreenState extends State<HomeScreen> {
           itemCount: dataList.length,
           itemBuilder: (context, index) {
             return DataList(
-              judul: dataList[index]['title'].toString(),
-              harga: formatPrice(dataList[index]['price'].toString()),
-              tanggal: dataList[index]['date'].toString(),
-              cardColor: (dataList[index]['category'] == 'Pemasukan')
+              title: dataList[index]['title'].toString(),
+              price: formatPrice(dataList[index]['price'].toString()),
+              date: dataList[index]['date'].toString(),
+              cardColor: (dataList[index]['category'] == 'Income')
                   ? const Color(0xFFDCEDC8)
                   : const Color(0xFFFFCDD2),
-              onKlik: () {
+              onClick: () {
                 editList(index);
               },
             );

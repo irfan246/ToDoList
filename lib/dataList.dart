@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 
 class DataList extends StatelessWidget {
-  final String judul;
-  final String harga;
-  final String tanggal;
+  final String title;
+  final String price;
+  final String date;
   final Color cardColor;
-  final VoidCallback onKlik;
+  final VoidCallback onClick;
 
   const DataList(
       {super.key,
-      required this.judul,
-      required this.harga,
-      required this.tanggal,
+      required this.title,
+      required this.price,
+      required this.date,
       required this.cardColor,
-      required this.onKlik});
+      required this.onClick});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class DataList extends StatelessWidget {
         child: Card(
           color: cardColor,
           child: InkWell(
-            onTap: onKlik,
+            onTap: onClick,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -33,14 +33,14 @@ class DataList extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        judul,
+                        title,
                         style: const TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       Text(
-                        tanggal,
+                        date,
                         style: const TextStyle(fontWeight: FontWeight.w300),
                       ),
                     ],
@@ -49,7 +49,7 @@ class DataList extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(right: 20),
                   child: Text(
-                    harga,
+                    price,
                     style: const TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.bold,
