@@ -1,3 +1,4 @@
+import 'package:catatan_keuangan/presentation/dataList.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../application/todoBloc.dart';
@@ -16,36 +17,28 @@ class HomeScreen extends StatelessWidget {
       body: BlocBuilder<TodoBloc, TodoState>(
         builder: (context, state) {
           if (state is TodoLoaded) {
-            final todos = state.todos;
-            return ListView.builder(
-              itemCount: todos.length,
-              itemBuilder: (context, index) {
-                final todo = todos[index];
-                return ListTile(
-                  title: Text(todo.title),
-                  subtitle: Text('Rp ${todo.price} - ${todo.date}'),
-                  trailing: IconButton(
-                    icon: const Icon(Icons.edit),
-                    onPressed: () {
-                      Navigator.pushNamed(
-                        context,
-                        '/edit',
-                        arguments: {
-                          'id': todo.id,
-                          'title': todo.title,
-                          'price': todo.price,
-                          'date': todo.date,
-                          'category': todo.category,
+            return state.todos.isEmpty
+                ? const Center(child: Text("No data."))
+                : ListView.builder(
+                    itemCount: state.todos.length,
+                    itemBuilder: (context, index) {
+                      final todo = state.todos[index];
+                      return DataList(
+                        title: todo.title,
+                        price: 'Rp ${todo.price}',
+                        date: todo.date,
+                        cardColor: (todo.category == 'Income')
+                            ? const Color(0xFFC8E6C9)
+                            : const Color(0XFFFFCDD2),
+                        onClick: () {
+                          Navigator.pushNamed(context, '/edit',
+                              arguments: todo);
                         },
                       );
                     },
-                  ),
-                );
-              },
-            );
-          } else {
-            return const Center(child: CircularProgressIndicator());
+                  );
           }
+          return const Center(child: CircularProgressIndicator());
         },
       ),
       floatingActionButton: FloatingActionButton(

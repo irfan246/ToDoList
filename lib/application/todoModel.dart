@@ -11,19 +11,4 @@ class Todo {
       required this.title,
       required this.price,
       required this.category});
-
-  Todo copyWith(
-      {String? id,
-      String? title,
-      String? price,
-      String? category,
-      String? date}) {
-    return Todo(
-      id: id ?? this.id,
-      title: title ?? this.title,
-      date: date ?? this.date,
-      price: price ?? this.price,
-      category: category ?? this.category,
-    );
-  }
 }

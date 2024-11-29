@@ -2,18 +2,12 @@ part of 'todoBloc.dart';
 
 abstract class TodoEvent {}
 
-class AddTodo extends TodoEvent {
-  final String date;
-  final String title;
-  final String price;
-  final String category;
+class LoadTodosEvent extends TodoEvent {}
 
-  AddTodo({
-    required this.title,
-    required this.date,
-    required this.price,
-    required this.category,
-  });
+class AddTodo extends TodoEvent {
+  final Todo todos;
+
+  AddTodo({required this.todos});
 }
 
 class DeleteTodo extends TodoEvent {
@@ -24,21 +18,7 @@ class DeleteTodo extends TodoEvent {
 
 class EditTodo extends TodoEvent {
   final String id;
-  final String newTitle;
-  final String newPrice;
-  final String newDate;
-  final String newCategory;
+  final Todo updateTodo;
 
-  EditTodo(
-      {required this.id,
-      required this.newTitle,
-      required this.newPrice,
-      required this.newDate,
-      required this.newCategory});
-}
-
-class UpdateCategory extends TodoEvent {
-  final String category;
-
-  UpdateCategory({required this.category});
+  EditTodo({required this.id, required this.updateTodo});
 }
